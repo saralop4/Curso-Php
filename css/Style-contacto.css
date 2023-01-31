@@ -1,0 +1,177 @@
+header {
+    background: linear-gradient( blue,white,white,red);
+    padding: 20px 0;
+}
+
+
+
+.caja{
+    width: 940px;
+    position: relative;
+    margin: 0 auto;
+}
+
+nav{
+    position: absolute;
+    top: 110px;
+    right: 0px;
+    
+}
+
+nav li{
+    display: inline;
+    margin: 0 0 0 15px;
+   
+  
+}
+
+nav a{
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: none;
+    
+
+}
+
+nav a:hover{
+    color: blue;
+    text-decoration: underline;
+    
+}
+
+.productos{
+    width: 940px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+
+
+footer{
+    text-align: center;
+    background: linear-gradient( blue,white,white,red);
+    padding: 40px;
+}
+
+.copyright{
+    color:#000000;
+    font-size:13px;
+    margin:20px;
+}
+
+
+
+
+main{
+    
+    font-style: italic;
+    width: 940px;
+    margin: auto;
+    
+
+}
+
+form{
+    margin: 30px 0;
+    padding: 5px 0;
+}
+
+form label{
+    display: block;
+    font-weight: bold;
+    font-style: italic;
+    font-size:15px;
+    margin: 0 0 10px;
+    
+
+}
+
+
+
+.input-padron{
+    display:block;
+    margin:0 0 20px;
+    padding: 7px 25px;
+   
+
+     
+}
+
+.btn-enviar{
+
+    background: linear-gradient(45deg,blue, white,white,red);
+    border-radius: 28px;
+    box-shadow: 5px 10px 30px ;
+    color: #000000;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 7px 25px;
+    text-decoration: none;
+    display:block;
+    margin:8px;
+    width:30%;
+    border:none;
+    cursor:pointer;
+    
+    
+
+}
+
+.btn-enviar:hover{
+    transform: scale(1,1.5);
+    background: linear-gradient(45deg, white,white,red,red);
+    transition: 1s;
+    transform: scale(1.2) rotate(360deg);
+}
+
+form legend{
+    display: block;
+    font-weight: bold;
+    font-style: italic;
+    font-size:15px;
+    margin: 0 0 10px;
+}
+
+.checkbox{
+    margin:20px 0;
+}
+
+table{
+    margin: 40px 40px;
+}
+
+thead{
+    background: linear-gradient(45deg,blue, white,white,red);
+    color:black;
+    font-weight: bold;
+
+}
+
+td,th{
+    border: 1px solid #000000;
+    padding: 8px 15px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 940px){
+
+    .caja,img{
+      text-align: center;
+    }
+      nav{
+  
+      position: static;
+      }
+  
+      .caja, .principal, .mapacenter, .contenido-diferenciales, .video{
+          width: auto;
+      }
+  
+      .lista-diferenciales, .imagen-diferenciales{
+          width:100%;
+      }
+  
+  }
+      

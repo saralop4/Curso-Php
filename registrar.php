@@ -1,10 +1,10 @@
 <?php
-        $conexion = new mysqli("127.0.0.1", "root", "", "dblogin");
+    $conexion = new mysqli("127.0.0.1", "root", "", "dblogin");
     //include("db\conexion.php");
     if(isset($_POST["btn-registrar"])){
 
         $nombre = mysqli_escape_string( $conexion,$_POST['nombre']);
-        //el metodo mysqli funciona para no permitir que en el campo no ingresen sentencia sql
+        //el metodo mysqli_escape funciona para no permitir que en el campo no ingresen sentencia sql
         $email = mysqli_escape_string( $conexion,$_POST['email']);
         $usuario = mysqli_escape_string( $conexion,$_POST['usuario']);
         $contraseña = mysqli_escape_string( $conexion,$_POST['contraseña']);
@@ -13,7 +13,7 @@
         $fila = $sql_user->fetch_assoc();
         //$resul_user = $fila->num_rows;
         if($fila >0 ){
-            echo "<script>
+           echo " <script>
                 window.addEventListener('DOMContentLoaded', (event) => {
                     Swal.fire({icon: 'error',
                         title: 'El usuario ya existe!',}).then((result) => {
@@ -28,16 +28,14 @@
         }else{
             //insertamos los datos en la db
             $sqlusuario = "INSERT INTO usuarios(nombre,correo,usuario,contraseña) VALUES('$nombre', '$email', '$usuario','$encrip_contraseña')";
-            $resulusuario =  $mysqli->query($sqlusuario);
+            $resulusuario =  $conexion->query($sqlusuario);
             if($resulusuario >0){
-                echo "
-              
-                <script>
+                echo " <script>
                 window.addEventListener('DOMContentLoaded', (event) => {
                     Swal.fire({icon: 'success',
                         title: 'Usuario Registrado!',}).then((result) => {
                         if (result.isConfirmed) {
-                            window.location = 'index.php';
+                            window.location = 'registrar.php';
                         } else if (result.isDenied) {
                           Swal.fire('Changes are not saved', '', 'info')
                         }
@@ -48,7 +46,7 @@
                 echo "<script>
                 window.addEventListener('DOMContentLoaded', (event) => {
                     Swal.fire({icon: 'error',
-                        title: 'Erro al Registrarse!',}).then((result) => {
+                        title: 'Error al Registrarse!',}).then((result) => {
                         if (result.isConfirmed) {
                             window.location = 'registrar.php';
                         } else if (result.isDenied) {
@@ -61,6 +59,15 @@
         }
 
     }
+    
+    /*elseif( isset($_POST["btn-regresar"]) && empty($_POST['nombre']) && empty($_POST['contraseña'])){
+
+        // header('Location: '.$registrar.php);
+       echo " <script>
+                 window.location = 'login.php';
+       </script>" ;
+ 
+      }*/
     $conexion->close();
 ?>
 
@@ -77,47 +84,28 @@
     <header></header>
     <main>
     <center>
-    <div class= "div-registrar">
-        <div class="encabezado"> 
+         <div class= "div-registrar">
+                 <div class="encabezado"> 
             <h3>Registro de Nuevos Usuarios</h3>
             <hr>
             <p>Ingresa los datos solicitados a continuacion:</p>
-        </div>
-            <form action="<?php $_SERVER["PHP_SELF"];?>" method="POST">
-               
-                <table  border= "2" style="border-color: red;">
-                    <tr>
-                        <td> <input  type= "text" name= "nombre" placeholder="Nombre Completo" required ></td>
-                    </tr>
-                    <tr>
-                        <td> <input type= "email" name= "email"  placeholder="Email" required></td>
-                    </tr>
-                    <tr>
-                        <td> <input type= "text" name= "usuario"  placeholder="Usuario" required></td>
-                    </tr>
-                    <tr>
-                        <td> <input type= "password" name= "contraseña"  placeholder="Password" required></td>
-                    </tr>
-                    <tr>
-                        <td> <input type= "password" name= "repetcontraseña"  placeholder="Repetir password" required></td>
-                    </tr>
-                    <tr>
-                        <td> 
-                            <input id="btnregistrar" type= "submit" name= "btn-registrar"  value="Registrarse"> 
-                            <input id="btnlimpiar" type= "reset" name= "btn-limpiar"  value="Reset">
-                        </td>
-                    </tr>
-                </table>
-         
-            </form>
-     </div>
+                 </div>
+                <form action="<?php $_SERVER["PHP_SELF"];?>" method="POST">
+
+                    <input class="campos-registrar"  type= "text" name= "nombre" placeholder="Nombre Completo" required ></td>
+                    <input class="campos-registrar" type= "email" name= "email"  placeholder="Email" required></td>
+                    <input class="campos-registrar" type= "text" name= "usuario"  placeholder="Usuario" required></td>
+                    <input class="campos-registrar" type= "password" name= "contraseña"  placeholder="Password" required></td>
+                    <input class="campos-registrar" type= "password" name= "repetcontraseña"  placeholder="Repetir password" required></td>
+                    <button id="btnregistrar" name= "btn-registrar" type="submit">Registrar</button>
+                    <button id="btnlimpiar" type="reset">Reset</button>
+                    <button id="btregresar" name = "btn-regresar" type="submit">Regresar al Login</button>
+                </form>
+                
+         </div>
      </center>
     </main>
-<footer> &copy; Derechos de autor reservados</footer>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="js/scripts.js"></script>
 </body>
 </html>
-
-
-

@@ -1,3 +1,16 @@
+<?php
+    $conexion = new mysqli("127.0.0.1", "root", "", "dblogin");
+    session_start();
+    $iduser = $_SESSION['id_usuario'];
+    $sql_user = $conexion->query("SELECT id,nombre FROM usuarios WHERE usuario= '$iduser'");
+    $fila = $sql_user->fetch_assoc();
+    if(isset($_SESSION["id_usuario"])){
+
+    }
+
+    ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +20,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hola bienvenido!</h1>
-    
+     <h1> ¡BIENDENIVODO!</h1>
 </body>
 </html>
